@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+    <code>ocmodmirror</code>
+    <name>Ocmod Mirror Editor</name>
+    <version>1.0.0</version>
+    <author>Printvity</author>
+    <link>https://help.9to5custom.com/</link>
+
+    <file path="admin/controller/marketplace/modification.php">
+        <operation>
+            <search><![CDATA[
+            $data['modifications'][] = array(
+            ]]></search>
+            <add position="after"><![CDATA[
+            'ocmodmirror' => $this->url->link('extension/module/ocmodmirror', 'user_token=' . $this->session->data['user_token'] . '&modification_id=' . $result['modification_id'], true),
+            ]]></add>
+        </operation>
+    </file>
+
+    <file path="admin/view/template/marketplace/modification.twig">
+        <operation>
+            <search><![CDATA[
+            href="{{ modification.link }}"
+            ]]></search>
+            <add position="before"><![CDATA[
+            {% if modification.ocmodmirror is defined and modification.ocmodmirror != '' %}
+            <a href="{{ modification.ocmodmirror }}" data-toggle="tooltip" title="Edit with Editor" target="_blank" class="btn btn-default"><i class="fa fa-pencil"></i></a>
+            {% endif %}
+            ]]></add>
+        </operation>
+    </file>
+
+</modification>

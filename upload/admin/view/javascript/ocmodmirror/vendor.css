@@ -1,0 +1,8 @@
+.CodeMirror {
+	min-height: 800px;
+	max-height: 1200px;
+	border: 1px solid #cdcdcd;
+}
+#form-editor {
+	margin-top: 15px;
+}
